@@ -1,0 +1,349 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b021a;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+/* Container Box */
+.container {
+    width: 100%;
+    max-width: 480px;
+    background: linear-gradient(180deg, #180033 0%, #050010 100%);
+    border-radius: 16px;
+    padding: 25px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Header Elements */
+.brand-logo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #00d2ff;
+    margin-bottom: 8px;
+}
+
+.hero-header h2 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    background: #0084ff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    color: #cccccc;
+    margin-bottom: 15px;
+}
+
+/* Fee Badge Box */
+.fee-badge-box {
+    background: rgba(233, 30, 99, 0.15);
+    border: 1px solid #e91e63;
+    color: #ff4081;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.fee-badge-box strong {
+    color: #ffffff;
+    font-size: 1.15rem;
+}
+
+/* Section Card */
+.section-card {
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #3b0066;
+    color: #ffffff;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* 2x2 Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.loan-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid #0084ff;
+    border-radius: 12px;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.loan-box:hover {
+    transform: translateY(-3px);
+    border-color: #00d2ff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.loan-icon {
+    font-size: 1.8rem;
+    color: #00d2ff;
+    margin-bottom: 8px;
+}
+
+.loan-box h3 {
+    font-size: 0.95rem;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.loan-box .rate {
+    font-size: 0.8rem;
+    color: #b19cd9;
+    margin-bottom: 8px;
+}
+
+.details-btn {
+    font-size: 0.75rem;
+    color: #00d2ff;
+    font-weight: bold;
+    display: block;
+}
+
+/* Calculator Styles */
+.calculator-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.calc-group {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.calc-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+.calc-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #3b0066;
+    background: #0b021a;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.calc-btn {
+    width: 100%;
+    background: #00d2ff;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.calc-result {
+    display: none;
+    margin-top: 12px;
+    background: #0084ff;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* Messaging Form Styles */
+.messaging-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.payment-instruction {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+.my-number-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px dashed #00d2ff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.my-number-box i {
+    color: #00d2ff;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #3b0066;
+    background: #0b021a;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.form-group textarea {
+    resize: none;
+}
+
+.submit-msg-btn {
+    width: 100%;
+    background: #25d366;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 11px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 5px;
+    transition: opacity 0.3s;
+}
+
+.submit-msg-btn:hover {
+    opacity: 0.9;
+}
+
+.success-alert {
+    background: #25d366;
+    color: #000;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+/* Modal Popup Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #180033;
+    border: 1px solid #00d2ff;
+    border-radius: 12px;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 5px 25px rgba(0, 210, 255, 0.3);
+}
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 1.8rem;
+    color: #ff007f;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    color: #00d2ff;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.modal-body-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-body-content li {
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.modal-body-content strong {
+    color: #fff;
+}
+
+.modal-apply-btn {
+    width: 100%;
+    background: #0084ff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Footer */
+.footer-cta {
+    margin-top: 15px;
+}
+
+.domain-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}

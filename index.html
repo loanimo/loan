@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyLoan BD - দ্রুত ও সহজ লোন সুবিধা</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="hero-header">
+            <h1 class="brand-logo"><i class="fa-solid fa-hand-holding-dollar"></i> <i>EasyLoan BD</i></h1>
+            <h2>জরুরি প্রয়োজনে দ্রুত লোন সেবা</h2>
+            <p class="subtitle">সহজ শর্তে এবং সর্বনিম্ন সুদে লোন পান। বিস্তারিত জানতে নিচের কার্ডগুলোতে ক্লিক করুন।</p>
+        </header>
+
+        <!-- Application Fee Notice Box -->
+        <div class="fee-badge-box">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>আবেদন ফি: <strong>৭৯০ টাকা</strong></span>
+        </div>
+
+        <!-- Loan Types Grid (Clickable for Details) -->
+        <div class="section-card">
+            <div class="card-header">আমাদের লোন সার্ভিসসমূহ (বিস্তারিত দেখতে ক্লিক করুন)</div>
+            <div class="grid-container">
+                <div class="loan-box" onclick="openDetails('personal')">
+                    <i class="fa-solid fa-user-gear loan-icon"></i>
+                    <h3>পার্সোনাল লোন</h3>
+                    <p class="rate">মেয়াদ: ১-৩ বছর</p>
+                    <span class="details-btn">বিস্তারিত দেখুন <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <div class="loan-box" onclick="openDetails('business')">
+                    <i class="fa-solid fa-briefcase loan-icon"></i>
+                    <h3>বিজনেস লোন</h3>
+                    <p class="rate">মেয়াদ: ১-৫ বছর</p>
+                    <span class="details-btn">বিস্তারিত দেখুন <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <div class="loan-box" onclick="openDetails('home')">
+                    <i class="fa-solid fa-house-chimney loan-icon"></i>
+                    <h3>হোম লোন</h3>
+                    <p class="rate">মেয়াদ: ৫-১৫ বছর</p>
+                    <span class="details-btn">বিস্তারিত দেখুন <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+                <div class="loan-box" onclick="openDetails('emergency')">
+                    <i class="fa-solid fa-motorcycle loan-icon"></i>
+                    <h3>ইমার্জেন্সি লোন</h3>
+                    <p class="rate">মেয়াদ: ৬-২৪ মাস</p>
+                    <span class="details-btn">বিস্তারিত দেখুন <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calculator Section -->
+        <div class="section-card calculator-card">
+            <div class="card-header"><i class="fa-solid fa-calculator"></i> কিস্তি ক্যালকুলেটর</div>
+            <div class="calc-group">
+                <label>লোনের পরিমাণ (টাকা):</label>
+                <input type="number" id="loanAmount" value="50000" placeholder="যেমন: 50000">
+            </div>
+            <div class="calc-group">
+                <label>মেয়াদ (মাস):</label>
+                <input type="number" id="loanMonths" value="12" placeholder="যেমন: 12">
+            </div>
+            <button onclick="calculateEMI()" class="calc-btn">হিসাব করুন</button>
+            <div id="calcResult" class="calc-result">
+                মাসিক আনুমানিক কিস্তি: <span id="monthlyEmi">0</span> টাকা
+            </div>
+        </div>
+
+        <!-- In-App Messaging & Apply Section -->
+        <div class="section-card messaging-card">
+            <div class="card-header"><i class="fa-solid fa-comments"></i> ইন-অ্যাপ সরাসরি মেসেজ ও আবেদন</div>
+            
+            <div class="payment-instruction">
+                <p>আবেদন ফি (৭৯০ টাকা) সেন্ড মানি করুন:</p>
+                <div class="my-number-box">
+                    <i class="fa-solid fa-mobile-screen-button"></i> 
+                    <span>bKash Personal: 01994500030</span>
+                </div>
+            </div>
+
+            <!-- Client Message Form -->
+            <form id="loanForm" onsubmit="submitClientMessage(event)">
+                <div class="form-group">
+                    <input type="text" id="clientName" placeholder="আপনার পূর্ণ নাম" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="clientPhone" placeholder="আপনার মোবাইল নম্বর" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="trxId" placeholder="বিকাশ TrxID (ফি পাঠানোর পর)" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="clientMsg" placeholder="আপনার যেকোনো প্রশ্ন বা বিস্তারিত লিখুন..." rows="3" required></textarea>
+                </div>
+                <button type="submit" class="submit-msg-btn"><i class="fa-solid fa-paper-plane"></i> মেসেজ পাঠান</button>
+            </form>
+            <div id="successMessage" class="success-alert" style="display: none;">
+                <i class="fa-solid fa-circle-check"></i> ধন্যবাদ! আপনার মেসেজ ও তথ্য সফলভাবে জমা হয়েছে। আমাদের প্রতিনিধি দ্রুত অ্যাপের মাধ্যমে আপনাকে আপডেট দেবেন।
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-cta">
+            <p class="domain-name">www.easyloanbd.com</p>
+        </footer>
+    </div>
+
+    <!-- Modal Popup for Loan Details -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeDetails()">&times;</span>
+            <h2 id="modalTitle">লোনের বিস্তারিত</h2>
+            <div id="modalBody" class="modal-body-content">
+                <!-- Details will be injected here via JavaScript -->
+            </div>
+            <button class="modal-apply-btn" onclick="closeDetails()">আবেদন ফর্মে যান</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Calculator, Form & Details Popup -->
+    <script>
+        // Loan Details Data
+        const loanInfo = {
+            personal: {
+                title: "পার্সোনাল লোন বিস্তারিত",
+                details: `
+                    <ul>
+                        <li><strong>সর্বোচ্চ লোন:</strong> ১,০০,০০০ - ৫,০০,০০০ টাকা</li>
+                        <li><strong>মেয়াদ:</strong> ১২ থেকে ৩৬ মাস</li>
+                        <li><strong>সুদের হার:</strong> বাৎসরিক ৯%</li>
+                        <li><strong>প্রয়োজনীয় কাগজপত্র:</strong> এনআইডি কার্ডের কপি এবং ছবি।</li>
+                        <li><strong>সুবিধা:</strong> কোনো জামানত ছাড়া দ্রুত অনুমোদন।</li>
+                    </ul>
+                `
+            },
+            business: {
+                title: "বিজনেস লোন বিস্তারিত",
+                details: `
+                    <ul>
+                        <li><strong>সর্বোচ্চ লোন:</strong> ২,০০,০০০ - ১৫,০০,০০০ টাকা</li>
+                        <li><strong>মেয়াদ:</strong> ১ থেকে ৫ বছর</li>
+                        <li><strong>সুদের হার:</strong> বাৎসরিক ৮.৫%</li>
+                        <li><strong>প্রয়োজনীয় কাগজপত্র:</strong> ট্রেড লাইসেন্স, এনআইডি এবং ব্যাংক স্টেটমেন্ট।</li>
+                        <li><strong>সুবিধা:</strong> ছোট ও মাঝারি ব্যবসার প্রসারে বিশেষ ছাড়।</li>
+                    </ul>
+                `
+            },
+            home: {
+                title: "হোম লোন বিস্তারিত",
+                details: `
+                    <ul>
+                        <li><strong>সর্বোচ্চ লোন:</strong> ৫,০০,০০০ - ৫০,০০,০০০ টাকা</li>
+                        <li><strong>মেয়াদ:</strong> ৫ থেকে ১৫ বছর</li>
+                        <li><strong>সুদের হার:</strong> বাৎসরিক ৭.৫%</li>
+                        <li><strong>প্রয়োজনীয় কাগজপত্র:</strong> জমির দলিল/ফ্ল্যাটের কাগজপত্র ও আয়ের প্রমাণ।</li>
+                        <li><strong>সুবিধা:</strong> দীর্ঘমেয়াদী এবং কম কিস্তিতে পরিশোধের সুযোগ।</li>
+                    </ul>
+                `
+            },
+            emergency: {
+                title: "ইমার্জেন্সি/বাইক লোন বিস্তারিত",
+                details: `
+                    <ul>
+                        <li><strong>সর্বোচ্চ লোন:</strong> ২০,০০০ - ১,৫০,০০০ টাকা</li>
+                        <li><strong>মেয়াদ:</strong> ৬ থেকে ২৪ মাস</li>
+                        <li><strong>সুদের হার:</strong> ১০%</li>
+                        <li><strong>প্রয়োজনীয় কাগজপত্র:</strong> এনআইডি কার্ড ও গ্যারান্টারের তথ্য।</li>
+                        <li><strong>সুবিধা:</strong> মাত্র ২ ঘণ্টার মধ্যে লোন বিতরণ।</li>
+                    </ul>
+                `
+            }
+        };
+
+        function openDetails(type) {
+            document.getElementById('modalTitle').innerText = loanInfo[type].title;
+            document.getElementById('modalBody').innerHTML = loanInfo[type].details;
+            document.getElementById('detailsModal').style.display = 'flex';
+        }
+
+        function closeDetails() {
+            document.getElementById('detailsModal').style.display = 'none';
+        }
+
+        function calculateEMI() {
+            let amount = parseFloat(document.getElementById('loanAmount').value);
+            let months = parseInt(document.getElementById('loanMonths').value);
+
+            if (isNaN(amount) || isNaN(months) || months <= 0 || amount <= 0) {
+                alert('অনুগ্রহ করে সঠিক পরিমাণ এবং মাস উল্লেখ করুন।');
+                return;
+            }
+
+            let interestRate = 0.10 / 12;
+            let emi = (amount * interestRate * Math.pow(1 + interestRate, months)) / (Math.pow(1 + interestRate, months) - 1);
+            
+            document.getElementById('monthlyEmi').innerText = Math.round(emi).toLocaleString('bn-BD');
+            document.getElementById('calcResult').style.display = 'block';
+        }
+
+        function submitClientMessage(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById('clientName').value;
+            let phone = document.getElementById('clientPhone').value;
+            let trx = document.getElementById('trxId').value;
+            let msg = document.getElementById('clientMsg').value;
+
+            console.log("Client Application:", { name, phone, trx, msg });
+
+            document.getElementById('loanForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
